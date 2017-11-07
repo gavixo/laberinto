@@ -1,12 +1,8 @@
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -28,6 +24,8 @@ public class Laberinto implements  Runnable
         int fila_salida = salidafilas;
 
 	static char lab[][]= obtener_matriz();
+        
+        private int Counter = 0;
 
 
    
@@ -36,36 +34,29 @@ public class Laberinto implements  Runnable
 
 	public Laberinto()
 	{
-
-		per = new Personaje(1, 0);
-
-
-                t.start();
+            per = new Personaje(1, 0);
+            t.start();
 	}
 
 	public void mover(int f, int c)
 	{
-		per.setLocation(c*50, f*50+40);
+            per.setLocation(c*50, f*50+40);
 	}
 
 	public  void run()
 	{
-          
-		boolean b = recorrer(entrada[0],entrada[1]);
-		if(b==true){
-			  System.out.println("////////////////////////////////////");
-                          System.out.println("         CAMINO ENCONTRADO          ");
-                          System.out.println("////////////////////////////////////");
-                }else{
-			System.out.println("////////////////////////////////////");
-                        System.out.println("         cAMINO SIN SALIDA          ");
-                        System.out.println("////////////////////////////////////");
-                 }
+            boolean b = recorrer(entrada[0],entrada[1]);
+            if(b==true){
+                System.out.println("////////////////////////////////////\n         CAMINO ENCONTRADO          \n////////////////////////////////////");
+            }else{
+                System.out.println("////////////////////////////////////\n         CAMINO SIN SALIDA          \n////////////////////////////////////");
+            }
 }
 
 	public boolean recorrer(int f, int c)
 	{
-		       
+            System.out.println("Move " + Counter);
+            Counter++;
             boolean salida=false;
 		lab[f][c]=VISITADO;
 
@@ -81,25 +72,21 @@ public class Laberinto implements  Runnable
 			if(!salida && estaDentro(f,c-1))
 			{
 				mover(f, c-1);
-				t.sleep(500);
 		    	salida=recorrer(f,c-1);
 			}
 			if(!salida && estaDentro(f,c+1))
 			{
 				mover(f, c+1);
-				t.sleep(500);
 		    	salida=recorrer(f,c+1);
 			}
 			if(!salida && estaDentro(f-1,c))
 			{
 				mover(f-1, c);
-				t.sleep(500);
 			    salida=recorrer(f-1,c);
 			}
 			if(!salida && estaDentro(f+1,c))
 			{
 				mover(f+1, c);
-				t.sleep(500);
 			    salida=recorrer(f+1,c);
 			}
 			if(!salida)
@@ -108,7 +95,6 @@ public class Laberinto implements  Runnable
 				if(lab[f][c]=='x')
 				{
 					mover(f, c);
-					t.sleep(500);
 				}
 
 	   		}
@@ -130,35 +116,21 @@ public class Laberinto implements  Runnable
 
 	public void construirLaberinto()
 	{
-            
-		int x = 0;
-		int y = 40;
+            int x = 0;
+            int y = 40;
 
-		for(int i=0; i<FILAS; i++)
+            for(int i=0; i<FILAS; i++)
+            {
+                for(int j=0; j<COLUMNAS; j++)
 		{
-			for(int j=0; j<COLUMNAS; j++)
-			{
-				if(lab[i][j]==PARED)
-				{
-                                                                      
-					
-					x+=50;
-				}
-				else
-					x+=50;
-			}
-			x=0;
-			y+=50;
+                    if(lab[i][j]==PARED)
+                        x+=50;
+                    else
+			x+=50;
 		}
-                String hh = "";
-                for (int k = 0; k < 10; k++) {
-                    for (int l = 0; l < 20; l++) {
-                         hh = hh+lab[k][l];
-                             }
-                     System.out.println(hh);
-                hh="";
-               }
-                System.out.println("///////////////////////////////////////////");
+                x=0;
+                y+=50;
+            }
 	}
 
 
@@ -174,12 +146,7 @@ public class Laberinto implements  Runnable
                System.out.println("            RAUL SUQUINAGUA    ");
                System.out.println(" INGENIERO:    ");
                System.out.println("         GABRIEL BARROS    ");
-               System.out.println("////////////////////////////////////////////////");
-               
-               System.out.println("el archivo de texto se encuentara en el proyecto");
-               System.out.println("Presione Cualquier tecla para Empezar");
-               Scanner escaner = new Scanner(System.in);
-               String teclado = escaner.nextLine();
+               System.out.println("////////////////////////////////////////////////\n");
 	       Laberinto lab = new Laberinto();
            
 	}
