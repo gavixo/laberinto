@@ -6,3 +6,15 @@ Los parametros a comparar inclulen:
 - Consumo de CPU
 - Consumo de memoria
 - Tamaño de la pila (heap)
+
+------------------------
+#GENERADOR DE LABERINTO
+------------------------
+Programa que genera un laberinto de m*n
+m y n no deben ser menores a 3 o generaran error
+el programa guarda el laberinto en un archivo de texto cuya ruta debe ser puesta en interfazLaberinto en el metodo copiar.
+integrantes de este proyecto:
+Sebastian Pinos
+Christian Alvarado
+Luis Guerrero
+Juan Avila
