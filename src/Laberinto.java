@@ -28,13 +28,15 @@ public class Laberinto implements  Runnable
         int fila_salida = salidafilas;
 
 	static char lab[][]= obtener_matriz();
+        
+        static long counter = 0;
+
+
+   
     Personaje per;
 	public Laberinto()
 	{
-
 		per = new Personaje(1, 0);
-
-
                 t.start();
 	}
 	public void mover(int f, int c)
@@ -46,12 +48,10 @@ public class Laberinto implements  Runnable
           
 		boolean b = recorrer(entrada[0],entrada[1]);
 		if(b==true){
-			  System.out.println("////////////////////////////////////");
                           System.out.println("         CAMINO ENCONTRADO          ");
                           System.out.println("////////////////////////////////////");
                 }else{
-			System.out.println("////////////////////////////////////");
-                        System.out.println("         cAMINO SIN SALIDA          ");
+                        System.out.println("         CAMINO SIN SALIDA          ");
                         System.out.println("////////////////////////////////////");
                  }
 }
@@ -154,30 +154,19 @@ public class Laberinto implements  Runnable
 	{
                System.out.println("////////////////////////////////////////////////");
                System.out.println("           BIENVENIDO AL LABERINTO              ");
-               System.out.println(" UNIVERSIDAD DE CUENCA    ");
-               System.out.println(" FACULTAD DE INGENIERIA    ");
-               System.out.println(" INTEGRANTS:    ");
-               System.out.println("            SANTIAGO ALULEMA    ");
-               System.out.println("            TATIANA SANGUÑA    ");
-               System.out.println("            RAUL SUQUINAGUA    ");
-               System.out.println(" INGENIERO:    ");
-               System.out.println("         GABRIEL BARROS    ");
-               System.out.println("Modificado por Christian Alvarado");
-               System.out.println("Universidad del Azuay");
-               System.out.println("Facultad de Administracion");
-               System.out.println("Ingenieria en sistemas y telematica");
                System.out.println("////////////////////////////////////////////////");
                
                System.out.println("el archivo de texto se encuentara en el proyecto");
                System.out.println("Presione Cualquier tecla para Empezar");
                Scanner escaner = new Scanner(System.in);
                String teclado = escaner.nextLine();
+               counter = System.nanoTime();
 	       Laberinto lab = new Laberinto();
            
 	}   
  public static char[][] obtener_matriz() {
      int x=0;
-       File archivo = new File("src\\Laberinto.txt");
+       File archivo = new File("Laberinto.txt");
         char[][] matriz =new char[1000][1000];
        // 
         FileReader lectura;
