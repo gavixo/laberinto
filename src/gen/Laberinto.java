@@ -8,6 +8,7 @@
  *
  * @author Christian-PC
  */
+package gen;
 public class Laberinto {
     private int n;
     private int m;

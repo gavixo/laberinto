@@ -11,7 +11,7 @@
 public class Control_Matriz {
     
     public static void control_matriz(char[] array) throws Errores{
-        if (array.length != 21) {
+        if (array.length == 2) {
             throw new Errores("el numero de columnas es menor o mayor a 21");
         }
         
@@ -19,7 +19,7 @@ public class Control_Matriz {
     }
     
     public static void Control_Filas(int comprobador) throws Errores{
-        if (comprobador != 11) {
+        if (comprobador == 2) {
             throw new Errores("El numero de filas es Menor o mayor a 11");
             
         }
